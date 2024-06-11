@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+}
+nav img{
+    width: 23vh;
+}
+main{
+    min-height: 900px;
+    width: 100%;
+    background-color: red;
+}
+.tamañocar{
+    height: 30%;
+}
+.imagenes img{
+    height: 30vh;
+    object-fit: cover;
+}
+.categorias{
+    min-height: 10vh;
+}
+footer{
+    width: 100vw;
+}
+
