@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,9 +10,190 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="main.css">
 </head>
-<body>
-    
 
+<body>
+    <header class="container">
+
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"><img src="./RECS/amazing_brand.png" alt=""></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="./index.html">HOME</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./upcomingevents.html">UPCOMING EVENTS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./pastevents.html">PAST EVENTS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./contact.html">CONTACT</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="true" href="#">STATS</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+    <main>
+        <div id="carouselExampleCaptions" class="carousel slide tamañocar" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+                    aria-label="Slide 4"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4"
+                    aria-label="Slide 5"></button>
+            </div>
+            <div class="carousel-inner imagenes">
+                <div class="carousel-item active">
+                    <img src="./RECS/optional_banner_1.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption  d-md-block">
+                        <h1>HOME</h1>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="./RECS/optional_banner_2.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-md-block">
+                        <h1>UPCOMING EVENTS</h1>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="./RECS/optional_banner_3.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-md-block">
+                        <h1>PAST EVENTS</h1>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="./RECS/optional_banner_4.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-md-block">
+                        <h1>CONTACT</h1>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="./RECS/optional_banner_5.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-md-block">
+                        <h1>STATS</h1>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <table class="table table-striped table-bordered">
+
+            <tbody>
+                <th colspan="12">
+                    Events Statistics
+                </th>
+                <tr>
+                    <td colspan="4">
+                        <table class="table mb-0">
+                            Events with highest % of assistance
+                        </table>
+                    </td>
+                    <td colspan="4">
+                        <table class="table mb-0">
+                            Events with lowest % of assistance
+                        </table>
+                    </td>
+                    <td colspan="4">
+                        <table class="table mb-0">
+                            Events with larger % of assistance
+                        </table>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th colspan="12">
+                        Upcoming events statistics by category
+                    </th>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <table class="table mb-0">
+                            Categories
+                        </table>
+                    </td>
+                    <td colspan="4">
+                        <table class="table mb-0">
+                            Revenues
+                        </table>
+                    </td>
+                    <td colspan="4">
+                        <table class="table mb-0">
+                            Percentage of assistance
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="12">
+                        Past events statistics by category
+                    </th>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <table class="table mb-0">
+                            Categories
+                        </table>
+                    </td>
+                    <td colspan="4">
+                        <table class="table mb-0">
+                            Revenues
+                        </table>
+                    </td>
+                    <td colspan="4">
+                        <table class="table mb-0">
+                            Percentage of assistance
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    <footer class="container-fluid d-flex justify-content-between pt-5 px-3">
+
+        <div class="row">
+
+            <div class="col-3">
+                <a href="https://www.facebook.com/eventosrossyoficial"><img src="./RECS/facebook.png" alt="Facebook"
+                        height="50"></a>
+            </div>
+            <div class="col-3">
+                <a href="https://www.instagram.com"><img src="./RECS/instagram.png" alt="instagram" height="50"></a>
+            </div>
+            <div class="col-1"> <a href="https://wa.me/6145945087"><img src="./RECS/whatsapp.png" alt="whatsapp"
+                        height="50"></a>
+            </div>
+        </div>
+
+        <div class="h2">COHORT</div>
+
+
+    </footer>
 
 
 
@@ -19,4 +201,5 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 </body>
+
 </html>
