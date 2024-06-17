@@ -13,10 +13,6 @@ header {
     font-weight: 700;
 }
 
-.pte img {
-    opacity: .9;
-}
-
 main {
     min-height: 85vh;
     width: 100%;
@@ -51,7 +47,6 @@ main {
 }
 
 .maindetails {
-    min-height: 75vh;
     background-color: blue;
 }
 
@@ -69,12 +64,6 @@ main {
 
 .card {
     background-color: #FAF3F3;
-}
-.card h5 {
-    font-weight: 700;
-}
-.mainstats {
-    min-height: 90vh;
 }
 footer {
     width: 100vw;
