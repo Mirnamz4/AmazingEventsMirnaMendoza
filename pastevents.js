@@ -169,7 +169,7 @@ const data = {
             _id: "639c723d992482e5f2834c01",
             name: "Batman",
             image: "https://i.postimg.cc/vH52y81C/cinema4.jpg",
-            date: "2022-3-11",
+            date: "2022-03-11",
             description: "Come see Batman fight crime in Gotham City.",
             category: "Cinema",
             place: "Room D1",
@@ -202,7 +202,7 @@ function crearTarjeta(i) {
     tarjeta.className = "card tarjetaTamaño col-md-4"
 
     tarjeta.innerHTML = `
-    <img src="${data.events[i].image}" class="card-img-top h-50 pt-2" alt="...">
+    <img src="${data.events[i].image}" class="card-img-top h-50 p-2" alt="...">
                 <div class="card-body text-center d-flex row">
                     <h5 class="card-title fw-bold"> ${data.events[i].name} </h5>
                     <p class="card-text">${data.events[i].description}</p>
@@ -215,11 +215,12 @@ function crearTarjeta(i) {
     contenedor.appendChild(tarjeta)
 }
 
-
 for (let j = 0; j <= data.events.length; j++) {
 
     if (data.currentDate > data.events[j].date) {
         crearTarjeta(j)
     }
 }
+
+
 

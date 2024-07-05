@@ -202,7 +202,7 @@ function crearTarjeta(i) {
     tarjeta.className = "card tarjetaTamaño col-md-4"
 
     tarjeta.innerHTML = `
-    <img src="${data.events[i].image}" class="card-img-top h-50 pt-2" alt="...">
+    <img src="${data.events[i].image}" class="card-img-top h-50 p-2" alt="...">
                 <div class="card-body text-center d-flex row">
                     <h5 class="card-title fw-bold"> ${data.events[i].name} </h5>
                     <p class="card-text">${data.events[i].description}</p>
