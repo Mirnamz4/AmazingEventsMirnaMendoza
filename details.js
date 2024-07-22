@@ -208,7 +208,7 @@ document.addEventListener('DOMContentLoaded', function () {
     contenedorDinamico.innerHTML = `
                  <div class="mt-md-5 col-md-4">
                         <img src="${tarj.image}" class="img-fluid rounded-start" alt="...">
-                 </div>
+                 </div> 
         <div class="col-md-8" >
           <div class="card-body" >
               <h1 class="card-title text-center fw-bold">${tarj.name}</h1>
