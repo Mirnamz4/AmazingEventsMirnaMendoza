@@ -169,7 +169,7 @@ const data = {
             _id: "639c723d992482e5f2834c01",
             name: "Batman",
             image: "https://i.postimg.cc/vH52y81C/cinema4.jpg",
-            date: "2022-03-11",
+            date: "2022-3-11",
             description: "Come see Batman fight crime in Gotham City.",
             category: "Cinema",
             place: "Room D1",
@@ -191,188 +191,36 @@ const data = {
             estimate: 9000,
             price: 250,
             __v: 0,
-        },
+        }
     ],
 };
-console.log(data.events);
-
-// Generar nuevo array
-
-let pastEvents = []
-
-data.events.forEach((elemento) => {
-    if (data.currentDate > elemento.date) {
-        pastEvents.push(elemento)
-    }
-})
-
-// Array de categorías
-
-let arrayCategorias = []
-
-pastEvents.forEach((elemento) => {
-    if (!arrayCategorias.includes(elemento.category)) {
-        arrayCategorias.push(elemento.category);
-    }
-})
-
-// Pintando categorías
-
-let categoriasPast = document.getElementById("categoriasPast")
-
-for (let i = 0; i < pastEvents.length; i++) {
-
-    let cat = document.createElement('div')
-    cat.className = "form-check"
-    cat.innerHTML = `
-        <input class="form-check-input border-success" onclick="categorias(${i})" type="checkbox" id="checkbx${[i]}" value="option${[i]}">
-        <label class="form-check-label fs-5" for="checkbx${i}">${arrayCategorias[i]} </label>`
-    categoriasPast.appendChild(cat)
-}
-
-let contenedorPastEvents = document.getElementById("contenedorPast")
-pintarC(pastEvents)
-
-// Array de categorías para filtrar
-
-let busca = document.getElementById("buscadorPast")
-let checar = []
-
-function categorias(x) {
-
-    let checkPalomita = document.getElementById("checkbx" + x)
-
-    if (checkPalomita.checked == true) {
-        checar.push(arrayCategorias[x])
-    }
-    else {
-        let buscador = checar.findIndex(not => not == arrayCategorias[x])
-        checar.splice(buscador, 1)
-    }
-    filterC(checar)
-}
-
-// Filter 
-
-let filtradas = []
-function filterC(arreglo) {
-
-    filtradas = []
-
-    if (arreglo.length == 0) {
-        if (busca.value == "") {
-            pintarC(pastEvents)
-        }
-        else {
-            pintarC(filtrado)
-        }
-    }
-    else {
-
-        for (let i = 0; i < arreglo.length; i++) {
-            pastEvents.forEach(nom => {
-                if (nom.category == arreglo[i]) {
-                    filtradas.push(nom)
-                }
-            })
-        }
-
-        if (busca.value == "") {
-            pintarC(filtradas)
-        }
-        else {
-            buscar2(filtradas)
-        }
-        console.log(filtradas);
-    }
-}
-
-// Buscador de palabras
-
-let filtrado = []
-busca.addEventListener("keyup", () => {
 
 
-    filtrado = []
-    filtrado = pastEvents.filter(nota =>
-        nota.name.toLowerCase().includes(busca.value.toLowerCase())
-        || nota.description.toLowerCase().includes(busca.value.toLowerCase())
-    )
-    if (checar.length == 0) {
-        pintarC(filtrado);
-    }
-    else {
-        filtrar(filtrado)
-    }
 
-})
+document.addEventListener('DOMContentLoaded', function () {
+    const urlS = new URLSearchParams(window.location.search);
+    let idArreglo = urlS.get('id')
 
-// Uniendo búsqueda de palabras y categorías
+    let tarj = data.events.find(num => num._id == idArreglo)
 
-let news = []
-function filtrar(arreglo) {
-    news = []
 
-    for (let i = 0; i < arreglo.length; i++) {
-        filtradas.forEach(nom => {
-            if (nom.category == arreglo[i].category) {
-                news.push(nom)
-            }
-        })
-    }
-    pintarC(news)
-}
-
-function buscar2(arraay) {
-    let filt1 = arraay.filter(nota =>
-        nota.name.toLowerCase().includes(busca.value.toLowerCase())
-        || nota.description.toLowerCase().includes(busca.value.toLowerCase())
-    )
-    console.log(arraay);
-    pintarC(filt1)
-}
-
-// Pintar notas
-
-function pintarC(arreglo) {
-
-    if (arreglo.length == 0) {
-
-        contenedorPastEvents.innerHTML = ""
-        let notFound = document.createElement('div')
-        notFound.className = "card tarjetaTamaño col-md-4"
-
-        notFound.innerHTML = `
-
-        <img src="./RECS/notfound.png" class="card-img-top h-50 p-2">
-
-        <div class="card-body text-center d-flex row">
-            <h5 class="card-title fw-bold"> No se han encontrado resultados.</h5>
-            <p class="card-text">Prueba realizando otra búsqueda.</p>
-            
+    let contenedorDinamico = document.getElementById("tarjetaDinamica")
+    contenedorDinamico.innerHTML = `
+                 <div class="mt-md-5 col-md-4">
+                        <img src="${tarj.image}" class="img-fluid rounded-start" alt="...">
+                 </div>
+        <div class="col-md-8" >
+          <div class="card-body" >
+              <h1 class="card-title text-center fw-bold">${tarj.name}</h1>
+              <p class="card-text fs-3">Date: ${tarj.date}</p>
+              <p class="card-text fs-4">${tarj.description}</p>
+              <p class="card-text fs-3">Category: ${tarj.category}</p
+              <p class="card-text fs-3">Place: ${tarj.place}</p>
+              <p class="card-text fs-5">Capacity: ${tarj.capacity}</p>
+              <p class="card-text fs-5">Estimate: ${tarj.assistance}</p>
+              <p class="card-text fs-3">Price: $${tarj.price}</p>
+          </div>
         </div> `
-        contenedorPastEvents.appendChild(notFound)
-    }
-    else {
-        contenedorPastEvents.innerHTML = ""
 
-        for (let i = 0; i < arreglo.length; i++) {
 
-            let tarjeta = document.createElement('div')
-            tarjeta.className = "card tarjetaTamaño col-md-4"
-
-            tarjeta.innerHTML = `
-            <img src="${arreglo[i].image}" class="card-img-top h-50 p-2">
-
-            <div class="card-body text-center d-flex row">
-                <h5 class="card-title fw-bold"> ${arreglo[i].name} </h5>
-                <p class="card-text">${arreglo[i].description}</p>
-                <div class="d-flex justify-content-between align-self-end">
-                    <p>Price: $${arreglo[i].price} </p>
-                    <a href="./details.html?id=${arreglo[i]._id}" class="btn btn-primary">Details</a>
-                </div>
-            </div> `
-            contenedorPastEvents.appendChild(tarjeta)
-        }
-    }
-}
+})

@@ -195,30 +195,183 @@ const data = {
     ],
 };
 
-function crearTarjeta(i) {
-    let contenedor = document.getElementById("upComingTarjetas")
+// Generar nuevo array
 
-    let tarjeta = document.createElement('div')
-    tarjeta.className = "card tarjetaTamaño col-md-4"
+let comingEvents = []
 
-    tarjeta.innerHTML = `
-    <img src="${data.events[i].image}" class="card-img-top h-50 p-2" alt="...">
-                <div class="card-body text-center d-flex row">
-                    <h5 class="card-title fw-bold"> ${data.events[i].name} </h5>
-                    <p class="card-text">${data.events[i].description}</p>
-                    <div class="d-flex justify-content-between align-self-end">
-                        <p>Price: $${data.events[i].price} </p>
-                        <a href="./details.html" class="btn btn-primary">Details</a>
-                    </div>
-                </div>
-    `
-    contenedor.appendChild(tarjeta)
+data.events.forEach((elemento) => {
+    if (data.currentDate < elemento.date) {
+        comingEvents.push(elemento)
+    }
+})
+
+
+// Array de categorías
+
+let arrayCategorias = []
+
+comingEvents.forEach((elemento) => {
+    if (!arrayCategorias.includes(elemento.category)) {
+        arrayCategorias.push(elemento.category);
+    }
+})
+
+// Pintando categorías
+
+let categoriasComing = document.getElementById("categoriasComing")
+
+for (let i = 0; i < comingEvents.length; i++) {
+
+    let cat = document.createElement('div')
+    cat.className = "form-check"
+    cat.innerHTML = `
+        <input class="form-check-input border-success" onclick="categorias(${i})" type="checkbox" id="checkbx${[i]}" value="option${[i]}">
+        <label class="form-check-label fs-5" for="checkbx${i}">${arrayCategorias[i]} </label>`
+    categoriasComing.appendChild(cat)
+}
+
+let contenedorComing = document.getElementById("upComingTarjetas")
+pintarC(comingEvents)
+
+// Array de categorías para filtrar
+
+let buscadorComing = document.getElementById("buscadorComing")
+
+let categoriasCheckeadas = []
+
+function categorias(x) {
+    let checkPalomita = document.getElementById("checkbx" + x)
+
+    if (checkPalomita.checked == true) {
+        categoriasCheckeadas.push(arrayCategorias[x])
+    }
+    else {
+        let buscador = categoriasCheckeadas.findIndex(not => not == arrayCategorias[x])
+        categoriasCheckeadas.splice(buscador, 1)
+    }
+    filterC(categoriasCheckeadas)
+}
+
+// Filter 
+
+
+let filtradas = []
+function filterC(arreglo) {
+
+    filtradas = []
+
+    if (arreglo.length == 0) {
+        if (buscadorComing.value == "") {
+            pintarC(comingEvents)
+        }
+        else {
+            pintarC(filtrado)
+        }
+    }
+    else {
+
+        for (let i = 0; i < arreglo.length; i++) {
+            comingEvents.forEach(nom => {
+                if (nom.category == arreglo[i]) {
+                    filtradas.push(nom)
+                }
+            })
+        }
+
+        if (buscadorComing.value == "") {
+            pintarC(filtradas)
+        }
+        else {
+            buscar2(filtradas)
+        }
+        console.log(filtradas);
+    }
+}
+
+// Buscador de palabras
+
+let filtrado = []
+buscadorComing.addEventListener("keyup", () => {
+    filtrado = []
+    filtrado = comingEvents.filter(nota =>
+        nota.name.toLowerCase().includes(buscadorComing.value.toLowerCase())
+        || nota.description.toLowerCase().includes(buscadorComing.value.toLowerCase())
+    )
+    if (categoriasCheckeadas.length == 0) {
+        pintarC(filtrado);
+    }
+    else {
+        filtrar(filtrado)
+    }
+})
+
+// Uniendo búsqueda de palabras y categorías
+
+let news = []
+function filtrar(arreglo) {
+    news = []
+
+    for (let i = 0; i < arreglo.length; i++) {
+        filtradas.forEach(nom => {
+            if (nom.category == arreglo[i].category) {
+                news.push(nom)
+            }
+        })
+    }
+    pintarC(news)
+}
+
+function buscar2(arraay) {
+    let filt1 = arraay.filter(nota =>
+        nota.name.toLowerCase().includes(buscadorComing.value.toLowerCase())
+        || nota.description.toLowerCase().includes(buscadorComing.value.toLowerCase())
+    )
+    console.log(arraay);
+    pintarC(filt1)
 }
 
 
-for (let j = 0; j <= data.events.length; j++) {
+// Pintar notas
 
-    if (data.currentDate < data.events[j].date) {
-        crearTarjeta(j)
+function pintarC(arreglo) {
+
+    if (arreglo.length == 0) {
+
+        contenedorComing.innerHTML = ""
+        let notFound = document.createElement('div')
+        notFound.className = "card tarjetaTamaño col-md-4"
+
+        notFound.innerHTML = `
+
+        <img src="./RECS/notfound.png" class="card-img-top h-50 p-2">
+
+        <div class="card-body text-center d-flex row">
+            <h5 class="card-title fw-bold"> No se han encontrado resultados.</h5>
+            <p class="card-text">Prueba realizando otra búsqueda.</p>
+            
+        </div> `
+        contenedorComing.appendChild(notFound)
+    }
+    else {
+        contenedorComing.innerHTML = ""
+
+        for (let i = 0; i < arreglo.length; i++) {
+
+            let tarjeta = document.createElement('div')
+            tarjeta.className = "card tarjetaTamaño col-md-4"
+
+            tarjeta.innerHTML = `
+            <img src="${arreglo[i].image}" class="card-img-top h-50 p-2">
+
+            <div class="card-body text-center d-flex row">
+                <h5 class="card-title fw-bold"> ${arreglo[i].name} </h5>
+                <p class="card-text">${arreglo[i].description}</p>
+                <div class="d-flex justify-content-between align-self-end">
+                    <p>Price: $${arreglo[i].price} </p>
+                    <a href="./details.html?id=${arreglo[i]._id}" class="btn btn-primary">Details</a>
+                </div>
+            </div> `
+            contenedorComing.appendChild(tarjeta)
+        }
     }
 }
