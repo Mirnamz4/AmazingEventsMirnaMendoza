@@ -206,21 +206,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let contenedorDinamico = document.getElementById("tarjetaDinamica")
     contenedorDinamico.innerHTML = `
-                 <div class="mt-md-5 col-md-4">
-                        <img src="${tarj.image}" class="img-fluid rounded-start" alt="...">
-                 </div> 
-        <div class="col-md-8" >
-          <div class="card-body" >
-              <h1 class="card-title text-center fw-bold">${tarj.name}</h1>
-              <p class="card-text fs-3">Date: ${tarj.date}</p>
-              <p class="card-text fs-4">${tarj.description}</p>
-              <p class="card-text fs-3">Category: ${tarj.category}</p
-              <p class="card-text fs-3">Place: ${tarj.place}</p>
-              <p class="card-text fs-5">Capacity: ${tarj.capacity}</p>
-              <p class="card-text fs-5">Estimate: ${tarj.assistance}</p>
-              <p class="card-text fs-3">Price: $${tarj.price}</p>
-          </div>
+    
+                 <div class="contenedorImagen col-md-6 my-auto ">
+                        <img src="${tarj.image}" class="img-fluid " alt="...">
+                        </div>
+          <div class="card-body text-center textoTarjeta" >
+              <h1 class="card-title pb-3 fw-bold text-success">${tarj.name}</h1>
+              <p class="card-text pDate fw-medium fs-5">${tarj.description}</p>
+              <p class="card-text  fw-medium fs-4">Date: ${tarj.date}</p>
+              <p class="card-text fw-medium fs-4">Price: $${tarj.price}</p>
+              <p class="card-text fw-medium fs-4">Place: ${tarj.place}</p>
+              <p class="card-text fw-medium fs-4">Category: ${tarj.category}</p>
+              <p class="card-text fw-medium fs-6 text-secondary">Capacity: ${tarj.capacity}</p>
+          
         </div> `
-
-
 })

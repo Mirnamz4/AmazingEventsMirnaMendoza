@@ -225,8 +225,8 @@ for (let i = 0; i < comingEvents.length; i++) {
     let cat = document.createElement('div')
     cat.className = "form-check"
     cat.innerHTML = `
-        <input class="form-check-input border-success" onclick="categorias(${i})" type="checkbox" id="checkbx${[i]}" value="option${[i]}">
-        <label class="form-check-label fs-5" for="checkbx${i}">${arrayCategorias[i]} </label>`
+        <input class="form-check-input fs-6 border-success" onclick="categorias(${i})" type="checkbox" id="checkbx${[i]}" value="option${[i]}">
+        <label class="form-check-label fw-medium fs-6" for="checkbx${i}">${arrayCategorias[i]} </label>`
     categoriasComing.appendChild(cat)
 }
 
@@ -359,15 +359,16 @@ function pintarC(arreglo) {
 
             let tarjeta = document.createElement('div')
             tarjeta.className = "card tarjetaTamaño col-md-4"
+            tarjeta.id = `tarjetaTrans`
 
             tarjeta.innerHTML = `
             <img src="${arreglo[i].image}" class="card-img-top h-50 p-2">
 
             <div class="card-body text-center d-flex row">
                 <h5 class="card-title fw-bold"> ${arreglo[i].name} </h5>
-                <p class="card-text">${arreglo[i].description}</p>
+                <p class="card-text fw-medium">${arreglo[i].description}</p>
                 <div class="d-flex justify-content-between align-self-end">
-                    <p>Price: $${arreglo[i].price} </p>
+                    <p class="text-success fw-medium">Price: $${arreglo[i].price} </p>
                     <a href="./details.html?id=${arreglo[i]._id}" class="btn btn-primary">Details</a>
                 </div>
             </div> `
