@@ -38,8 +38,9 @@ export function pintarCategorias(array) {
 }
 
 export function pintarEventoFirst(array, array2, x) {
-    let first = document.getElementById("first")
 
+    let bodyTable = document.getElementById("bodyTable")
+    let first = document.createElement("tr")
 
     let arregloSorteado2 = array2.sort((a, b) => {
         if (a.capacity < b.capacity) { return -1 } if (a.capacity > b.capacity) { return 1 } return 0;
@@ -48,7 +49,22 @@ export function pintarEventoFirst(array, array2, x) {
     first.innerHTML = `
                         <td>${array[array.length - 1].name} (${array[array.length - 1].porcentaje}%) </td>
                         <td>${array[0].name} (${array[0].porcentaje}%)</td>
-                        <td>${arregloSorteado2[arregloSorteado2.length - 1].name} (${arregloSorteado2[arregloSorteado2.length - 1].capacity})</td> `
+                        <td>${arregloSorteado2[arregloSorteado2.length - 1].name} (${arregloSorteado2[arregloSorteado2.length - 1].capacity})</td> 
+                       `
+    bodyTable.appendChild(first)
+
+    let first2 = document.createElement("tr")
+    first2.innerHTML = `
+                <th scope="row" class="table-danger" colspan="3">Upcoming events statistics by category</th> `
+    bodyTable.appendChild(first2)
+
+    let first3 = document.createElement("tr")
+    first3.innerHTML = `
+    <td class="text-body-secondary">Categories</td>
+    <td class="text-body-secondary">Revenues</td>
+    <td class="text-body-secondary">Percentage of assistance</td>`
+    bodyTable.appendChild(first3)
+
 }
 
 export function obtenerInfo(array) {
