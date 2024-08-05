@@ -161,7 +161,7 @@ export function pintarSecond(array) {
 export function revenuesE(arreglo) {
     let sumaTotal = 0;
     arreglo.forEach(evento => sumaTotal = sumaTotal + parseInt(evento.revenues));
-    return sumaTotal;
+    return (sumaTotal).toLocaleString('es-US');
 }
 export function porcentajeE(arreglo) {
     let sumaTotal = 0;
